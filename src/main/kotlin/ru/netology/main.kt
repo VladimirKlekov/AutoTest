@@ -41,11 +41,11 @@ fun main() {
 
         val inputTransfer = chek?.toInt()
         when (inputTransfer) {
-            1 -> DebitTransferLimitOnVKPay(amount);
-            2 -> TransferLimitMastercardAndMaestro(amount);
-            3 -> TransferLimitMastercardAndMaestro(amount);
-            4 -> TransferLimitVizaAndMir(amount);
-            5 -> DebitTransferLimitOnVKPay(amount);
+            1 -> debitTransferLimitOnVKPay(amount);
+            2 -> transferLimitMastercardAndMaestro(amount);
+            3 -> transferLimitMastercardAndMaestro(amount);
+            4 -> transferLimitVizaAndMir(amount);
+            5 -> debitTransferLimitOnVKPay(amount);
             6 -> creditTransferLimitWithVKPay(amount);
         else -> {
                 print("Ошибка ввода. Выберите правильный вариант")
@@ -57,7 +57,7 @@ fun main() {
 }
 fun creditTransferLimitWithVKPay(amount: Int) {
 
-    if (amount < LIMIT_TRANSFER_VKPAY_IN_DAY_RUB && amountVkPay < LIMIT_TRANSFER_CARD_IN_MONTH_RUB) {
+    if (amount < LIMIT_TRANSFER_VKPAY_IN_DAY_RUB && amountVkPay < LIMIT_TRANSFER_VKPAY_IN_MONTH_RUB) {
         amountVkPay += amount
         println("Сумма комиссии составила 0 рублей")
 
@@ -67,20 +67,20 @@ fun creditTransferLimitWithVKPay(amount: Int) {
 
 }
 
-fun DebitTransferLimitOnVKPay(amount: Int) {
+fun debitTransferLimitOnVKPay(amount: Int) {
 
     if (amount < LIMIT_TRANSFER_CARD_IN_DAY_RUB && amountVkPay < LIMIT_TRANSFER_CARD_IN_MONTH_RUB) {
         amountVkPay += amount
         println("Сумма комиссии составила 0 рублей")
 
-    } else {
+    } else { val messange: String = "Лимит по крате превышен"
         println("Лимит по крате превышен")
     }
 
 }
 
 
-fun TransferLimitMastercardAndMaestro(amount: Int) {
+fun transferLimitMastercardAndMaestro(amount: Int) {
 
     if (amount < LIMIT_TRANSFER_CARD_IN_DAY_RUB && amountMastercardAndMaestro < LIMIT_TRANSFER_CARD_IN_MONTH_RUB) {
         amountMastercardAndMaestro += amount
@@ -96,7 +96,7 @@ fun TransferLimitMastercardAndMaestro(amount: Int) {
 
 }
 
-fun TransferLimitVizaAndMir(amount: Int) {
+fun transferLimitVizaAndMir(amount: Int) {
 
     if (amount < LIMIT_TRANSFER_CARD_IN_DAY_RUB && amountMastercardAndMaestro < LIMIT_TRANSFER_CARD_IN_MONTH_RUB) {
         amountVizaAndMir += amount
