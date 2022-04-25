@@ -73,8 +73,8 @@ fun debitTransferLimitOnVKPay(amount: Int) {
         amountVkPay += amount
         println("Сумма комиссии составила 0 рублей")
 
-    } else { val messange: String = "Лимит по крате превышен"
-        println("Лимит по крате превышен")
+    } else { val messageLimitOnVk: String = "Лимит по крате превышен"
+        println(messageLimitOnVk)
     }
 
 }
