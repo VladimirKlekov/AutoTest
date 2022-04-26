@@ -1,6 +1,8 @@
 var amountMastercardAndMaestro: Int = 0
 var amountVkPay: Int = 0
+var amountVkPayDeb: Int = 0
 var amountVizaAndMir: Int = 0
+
 
 
 const val ACTION_MIN_SUM_TRANSFER_MASTER_AND_MAESTRO_RUB = 300
@@ -70,11 +72,10 @@ fun creditTransferLimitWithVKPay(amount: Int) {
 fun debitTransferLimitOnVKPay(amount: Int) {
 
     if (amount < LIMIT_TRANSFER_CARD_IN_DAY_RUB && amountVkPay < LIMIT_TRANSFER_CARD_IN_MONTH_RUB) {
-        amountVkPay += amount
+        amountVkPayDeb += amount
         println("Сумма комиссии составила 0 рублей")
 
-    } else { val messageLimitOnVk: String = "Лимит по крате превышен"
-        println(messageLimitOnVk)
+    } else {  println("Лимит по крате превышен")
     }
 
 }
